@@ -10,8 +10,10 @@ def welcome(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
         return render(request, "users/welcome.html")
+        return redirect('/index')
     # En otro caso redireccionamos al login
     return redirect('/login')
+
 
 def register(request):
     # Creamos el formulario de autenticación vacío
@@ -71,3 +73,8 @@ def logout(request):
     do_logout(request)
     # Redireccionamos a la portada
     return redirect('/')
+
+
+def index(request):
+    return render(request, "users/Index.html")
+    return redirect('/index')
